@@ -1,0 +1,10 @@
+#cont {
+	height:100%;
+	width:expression(document.body.clientWidth<1001?"1000px":"auto");
+	}
+#footer {
+	width:expression(document.body.clientWidth<1001?"1000px":"auto");
+	}
+img.png {
+	behavior:url("/css/pngbehavior.htc");
+	}

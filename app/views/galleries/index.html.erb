@@ -1,0 +1,5 @@
+<ul>
+  <% @galleries.each do |gallery| %>
+    <li><%= link_to gallery.name, user_gallery_path(gallery.user_id, gallery.id) %></li>
+  <% end %>
+</ul>

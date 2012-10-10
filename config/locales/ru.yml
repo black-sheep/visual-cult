@@ -1,0 +1,31 @@
+ru:
+  login: "Имя пользователя"
+  use_like_portfolio_address: "Используется как адрес портфолио"
+  city: "Город"
+  about: "О себе"
+  about_description: "Где учились, выставки, конкурсы о работах"
+  save: "Сохранить"
+  remember_me: "Запомнить меня"
+  sign_in: "Вход"
+  sign_up: "Зарегистрироваться"
+  forgot_password: "Забыли пароль?"
+  login_in: "Войти"
+  current_password: "Текущий пароль"
+  edit_user_current_pass: "Для изменения ваших данных введите свой текущий пароль"
+  cansel: "Отмена"
+  back: "Назад"
+  born: "Родился"
+  what_inspires: "Что вдохновляет"
+  y: "г"
+  in: "в"
+  prepositional: "е"
+  gallery_name: "Название серии"
+  gallery_description: "Описание серии"
+  delete: "Удалить"
+  activerecord:
+    models:
+    attributes:
+      new:
+        title: "Заголовок"
+        text: "Текст"
+        picture: "Картинка"

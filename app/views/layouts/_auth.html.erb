@@ -1,0 +1,30 @@
+<div class="pane">
+  <% unless user_signed_in? %>
+
+  <ul class="auth">
+    <li class="first">
+      <a href="#auth" onClick="expandit('auth_popup')"><%= t :login_in %></a>
+    </li>
+    <li>
+      <%= link_to t(:sign_up), new_user_registration_path %>
+    </li>
+  </ul>
+
+
+  <form action="/search.php" method="post" class="search">
+    <input type="submit" class="submit" text="search" />
+    <input type="text" class="text" placeholder="Поиск" />
+  </form>
+
+  <div id="auth_popup" class="popup" style="display:none">
+    <a class="close" href="#close_window" onClick="expandit('auth_popup')"><i class="ico ico-close">&nbsp;</i></a>
+
+    <%= render 'devise/sessions/new' %>
+
+  </div>
+  <% else %>
+      <%= link_to t(:sign_out), logout_path, :method => :delete %>
+  <% end %>
+
+</div>
+

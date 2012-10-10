@@ -1,0 +1,12 @@
+<%= form_for @gallery, :validate => true, :url => {:action => 'update'} do |f| %>
+    <div class="row-fluid">
+      <div class="span3">
+        <%= f.label :name, t(:gallery_name) %>
+        <%= f.text_field :name, :size => 31 %>
+        <%= f.label :description, t(:gallery_description) %>
+        <%= f.text_area :description, :size => '30x10' %>
+      </div>
+    </div>
+    <%= content_tag :button, t(:save) %>
+    <%= link_to t(:delete), { :controller => :galleries, :action => :destroy }, :method => :delete %>
+<% end %>

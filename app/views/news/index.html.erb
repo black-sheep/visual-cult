@@ -1,0 +1,18 @@
+<ul class="news">
+  <% @news.all.each do |new| %>
+  <li>
+    <div class="news-head">
+      <span class="date"><%= new.created_at.strftime('%d.%m.%y, %H:%M') %></span>
+      <h2><%= new.title %></h2>
+    </div>
+    <div class="news-body">
+      <%= image_tag new.picture.url, :class => 'news-image' %>
+      <%= new.text %>
+    </div>
+    <div class="tags">
+      <strong>Тэги:</strong> <a href="#">спорт</a>, <a href="#">фотография</a>, <a href="#">carhartt</a>
+    </div>
+    <%= render 'layouts/social/social_news' %>
+  </li>
+  <% end %>
+</ul>

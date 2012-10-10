@@ -1,0 +1,53 @@
+* {
+	margin: auto;
+	/*padding: auto;*/
+}
+
+#header {
+	display: none;
+}
+
+#main-content {
+	padding: 0;
+	overflow: hidden;
+}
+
+#footer {
+	display: none;
+}
+
+#footer-spacer {
+	display: none;
+}
+
+body.printertest {
+	min-width: 1382px;
+}
+
+/*body.printertest #cont {
+	page-break-inside: always;
+}
+
+body.printertest #main-content {
+	page-break-inside: always;
+}
+*/
+body.printertest .img-cont {
+	overflow: hidden;
+	width: 100%;
+}
+
+img.img-page-break {
+	width: 100%;
+	height: 100%;
+	/*margin: 0 -100% 0 0;*/
+	/*width: 100mm !important;
+	height: 150mm !important;*/
+	/*width: 100%; 1275px */
+	/*width: 1366px;*/
+	/*width: 1176px;*/
+}
+
+body.printertest #cont {
+	display: none;
+}

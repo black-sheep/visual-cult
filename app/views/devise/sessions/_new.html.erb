@@ -1,0 +1,22 @@
+<h4><%= t :sign_in %></h4>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'enter_form'}) do |f| %>
+    <%= f.email_field :email, :tabindex => 1, :maxlength => 64, :size => 20 %>
+
+    <%= link_to t(:sign_up), new_user_registration_path %>
+
+    <%= f.password_field :password, :tabindex => 2, :maxlength => 64, :size => 20 %>
+
+    <%= link_to t(:forgot_password), new_password_path(resource_name) %>
+
+
+    <% if devise_mapping.rememberable? -%>
+        <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me, :tabindex => 3 %>
+            <%= t :remember_me %>
+        <% end %>
+    <% end -%>
+
+    <div><%= content_tag :button, t(:sign_in) %></div>
+
+<% end %>

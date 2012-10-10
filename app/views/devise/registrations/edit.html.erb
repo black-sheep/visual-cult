@@ -1,0 +1,66 @@
+<h2>Редактирование профиля</h2>
+
+<%= form_for(@user, :validate => true, :url => registration_path(:user), :html => { :method => :put }) do |f| %>
+    <div class="row-fluid">
+      <div class="span3">
+
+        <%= f.label :email  %>
+        <%= f.email_field :email, :maxlength => 64, :tabindex => 1, :size => 20, :validate => true %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, :maxlength => 64, :tabindex => 2, :size => 20 %>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :maxlength => 64, :tabindex => 3, :size => 20 %>
+
+        <%= f.label :second_name %>
+        <%= f.text_field :second_name, :maxlength => 64, :tabindex => 4, :size => 20 %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, :maxlength => 64, :tabindex => 5, :size => 20 %>
+
+        <%= f.label :phone %>
+        <%= f.text_field :phone, :maxlength => 64, :tabindex => 5, :size => 20 %>
+
+      </div>
+      <div class="span9 lineForm">
+
+        <%= f.label :login do %>
+            <%= t :login %>
+            <%= content_tag :small, t(:use_like_portfolio_address) %>
+        <% end %>
+        <%= f.text_field :login, :maxlength => 64, :tabindex => 7, :size => 20 %>
+
+        <%= f.label :birthday %>
+        <%= f.date_select :birthday, :start_year => 1910, :end_year => Time.now.year - 3 %>
+
+        <%= f.label :city do %>
+            <%= t :city %>
+            <%= content_tag :small do %>
+                <%= link_to 'Санкт-Петербург', '#' %>, <%= link_to 'Москва', '#' %>
+            <% end %>
+        <% end %>
+        <%= f.text_field :city, :maxlength => 64, :tabindex => 11, :size => 20 %>
+
+        <%= f.label :about do %>
+            <%= t :about %>
+            <%= content_tag :small, t(:about_description) %>
+        <% end %>
+        <%= f.text_area :about, :size => '30x10', :tabindex => 12, :class => 'hight-big' %>
+
+        <%= f.label :what_inspires %>
+        <%= f.text_area :what_inspires, :size => '30x10', :tabindex => 13, :class => 'hight-middle' %>
+
+      </div>
+    </div>
+
+    <div><i>(<%= t(:edit_user_current_pass) %>)</i><br />
+    <%= f.password_field :current_password %></div>
+
+    <div><%= content_tag :button, 'Update' %></div>
+
+
+<% end %>
+
+<p><%= link_to t(:cansel), registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+<%= link_to t(:back), :back %>
