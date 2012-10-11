@@ -1,3 +1,11 @@
+<% content_for(:head) do %>
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $("#markItUp").markItUp(myBbcodeSettings);
+        });
+    </script>
+<% end %>
+
 <%= form_for @new, :validate => true, :url => {:action => 'create'}, :html => { :multipart => true } do |f| %>
     <div class="row-fluid">
       <div class="span3">
@@ -7,8 +15,11 @@
         <%= f.label :title %>
         <%= f.text_field :title, :size => 31, :tabindex => 2 %>
         <%= f.label :text %>
-        <%= f.text_area :text, :size => '30x10', :tabindex => 3 %>
+        <%= f.text_area :text, :size => '30x10', :tabindex => 3, :id => 'markItUp' %>
+        <%= f.label :tags %>
+        <%= f.text_area :tags, :size => '113x5', :tabindex => 4 %>
       </div>
     </div>
     <%= content_tag :button, t(:save), :tabindex => 4 %>
 <% end %>
+

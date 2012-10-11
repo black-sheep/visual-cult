@@ -10,6 +10,9 @@
 //= require default.js
 //= require cusel.js
 
+//= markitup/jquery.markitup
+//= markitup/sets/default/set
+
 
 
 

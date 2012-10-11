@@ -32,12 +32,13 @@
   <![endif]-->
   <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=PT+Sans' %>
 
+  <%= yield :head %>
 </head>
 <body>
 <div id="cont">
   <%= render "layouts/head" %>
   <div id="main-content">
-    <%= render "layouts/filter" %>
+    <%= render "layouts/menus/filter" %>
     <%= yield %>
   </div>
   <div id="footer-spacer"></div>

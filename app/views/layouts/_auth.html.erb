@@ -23,7 +23,7 @@
 
   </div>
   <% else %>
-      <%= link_to t(:sign_out), logout_path, :method => :delete %>
+      <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
   <% end %>
 
 </div>

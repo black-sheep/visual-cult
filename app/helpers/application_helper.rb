@@ -15,4 +15,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def can?(*permission_name)
+    current_user && permission_name.inject(false) { |acc, pn| acc || current_user.can?(pn) }
+  end
+
 end

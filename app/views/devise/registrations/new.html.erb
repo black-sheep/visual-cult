@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for(@user, :validate => true, :url => registration_path(:user), :html => { :multipart => true }) do |f| %>
 
     <div class="row-fluid">
@@ -71,5 +72,5 @@
     <%= content_tag :button, t(:save), :tabindex => 15 %>
 
 <% end %>
-
+</div>
 

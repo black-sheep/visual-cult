@@ -1,18 +1,26 @@
-<ul class="news">
-  <% @news.all.each do |new| %>
-  <li>
-    <div class="news-head">
-      <span class="date"><%= new.created_at.strftime('%d.%m.%y, %H:%M') %></span>
-      <h2><%= new.title %></h2>
-    </div>
-    <div class="news-body">
-      <%= image_tag new.picture.url, :class => 'news-image' %>
-      <%= new.text %>
-    </div>
-    <div class="tags">
-      <strong>Тэги:</strong> <a href="#">спорт</a>, <a href="#">фотография</a>, <a href="#">carhartt</a>
-    </div>
-    <%= render 'layouts/social/social_news' %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+    <ul class="news">
+      <% @news.all.each do |new| %>
+      <li>
+        <div class="news-head">
+          <span class="date"><%= new.created_at.strftime('%d.%m.%y, %H:%M') %></span>
+          <h2><%= new.title %></h2>
+            <%= link_to '', new_news_path, :class => 'ico ico-plus' if can?('create_news') %>
+            <%= link_to '', edit_news_path(new.id), :class => 'ico ico-pencil' if can?('edit_news') %>
+            <%= link_to '', news_path(new.id), :method => :delete, :class => 'ico ico-close-small', :confirm => t('news.confirm_delete') if can?('delete_news') %>
+        </div>
+        <div class="news-body">
+          <%= image_tag new.picture.url, :class => 'news-image' %>
+          <%= new.text %>
+        </div>
+        <div class="tags">
+          <strong><%= t('news.tags') %>:</strong> <%= tags_by_new_id(new.id) %>
+        </div>
+        <%= render 'layouts/social/social_news' %>
+      </li>
+      <% end %>
+    </ul>
+
+
+
+</div>

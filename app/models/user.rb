@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :second_name, :name, :phone, :login, :birthday, :city, :about, :what_inspires, :avatar
   # attr_accessible :title, :body
-  belongs_to :role
-  has_many   :galleries
+
+  has_many :galleries
+  has_many :permissions, :through => :roles
+  has_and_belongs_to_many :roles
 
   mount_uploader :avatar, AvatarUploader
 
@@ -46,5 +48,16 @@ class User < ActiveRecord::Base
   validates :second_name, :presence => true,
             :format                 => { :with => name_regex },
             :length                 => { :within => 2..40}
+
+  before_create :add_default_role
+
+  def can?(permission_name)
+    self.permissions.find_by_name(permission_name)
+  end
+
+  private
+  def add_default_role
+    self.roles<<Role.find(3)
+  end
 
 end

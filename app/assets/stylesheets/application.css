@@ -2,4 +2,6 @@
  *= require default
  *= require bootstrap
  *= require bootstrap-responsive
+ *= require markitup/skins/markitup/style
+ *= require markitup/sets/default/style
  */
