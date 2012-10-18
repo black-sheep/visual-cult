@@ -1,0 +1,6 @@
+<%= content_tag :div, 'Добавить технологию' %>
+
+<%= form_for @technology, :url => {:action => 'create'} do |f| %>
+    <%= f.text_field 'name' %>
+    <%=	content_tag :button, t('save') %>
+<% end %>

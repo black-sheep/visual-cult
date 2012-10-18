@@ -1,12 +1,10 @@
 VisualCultV2::Application.routes.draw do
 
-  get "photos/index"
+  get "permissions/index"
 
-  get "photos/new"
-
-  get "photos/show"
-
-  get "photos/edit"
+  namespace :admin do
+    resources :technologies, :colors, :rubriks, :interiors, :permissions
+  end
 
   devise_for :users
 

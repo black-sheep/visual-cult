@@ -1,2 +1,171 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<div class="container">
+  <div class="picture-definition">
+    <div class="picture-definition-base">
+      <a class="pull-right ico ico-favorite-off" onClick="expandit('tooltip-favorite')"></a>
+      <div class="tooltip tooltip-bottom" id="tooltip-favorite" style="display:none">
+        <p>Чтобы добавить работы в избранное, необходимо <strong>зарегистрироваться</strong></p>
+
+        <%= render 'layouts/social/social_photo' %>
+
+      </div>
+      <h2 class="author"><%= @photo.gallery.user.second_name %> <%= @photo.gallery.user.name %></h2>
+      <h3 class="name"><%= @photo.name %></h3>
+      <p>Ручная фотопечать</p>
+      <p>Тиражи меньше 50 - с подписью автора</p>
+      <p>Тиражи от 50 - первые 3 отпечатка с подписью.</p>
+    </div>
+    <h4>Выберите размер и оформление отпечатка:</h4>
+    <table>
+      <tr class="checked">
+        <td>
+          <p>30*45см, 1 из 50,  подпись</p>
+          <div class="variants">
+            <a href="#">Черная, дерево</a>
+            <a href="#">Белая, дерево</a>
+          </div>
+        </td>
+        <td><label for="1"><input type="checkbox" name="1" id="1"> Рамка</label></td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td></p>40*60см, 1 из 10, подпись</p></td>
+        <td></td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td></p>160*90см,  1 из 500, подпись</p></td>
+        <td></td>
+        <td>4000</td>
+      </tr>
+    </table>
+
+    <div class="parametrs">
+      <div class="parametrs-visual" >
+        <ul>
+          <li><a class="active"  onclick="changeImg1('changedImgPreview');">1</a></li>
+          <li><a class=""  onclick="changeImg2('changedImgPreview');">2</a></li>
+          <li><a class=""  onclick="changeImg3('changedImgPreview');">3</a></li>
+        </ul>
+        <img id="changedImgPreview" src="i/_tmp/pic1-big.jpg" alt="">
+      </div>
+
+      <p><small>42*57см по внешней стороне</small></p>
+
+      <h4>Другие варианты:</h4>
+      <strong>Фотобумага:</strong>
+      <ul>
+        <li><a class="selected" href="#">Фотобумага 190 г/м <sup>3</sup></a></li>
+        <li><a href="#">Фотобумага 300 г/м<sup>3</sup></a></li>
+        <li><a href="#">Холст</a></li>
+      </ul>
+
+      <strong>Рамки, дерево:</strong>
+      <ul>
+        <li><a href="#">Серебряная</a></li>
+        <li><a class="selected" href="#">Береза</a></li>
+        <li><a href="#">Вишня</a></li>
+        <li><a href="#">Орех</a></li>
+      </ul>
+
+      <strong>Доставка:</strong>
+      <ul>
+        <li><a class="selected" href="#">Самовывоз</a></li>
+        <li><a href="#">Доставка за 24 часа </a></li>
+        <li><a href="#">Доставка 2 дня</a></li>
+      </ul>
+
+      <strong>Стекло:</strong>
+      <ul>
+        <li><a class="selected" href="#">Без стекла</a></li>
+        <li><a href="#">Простое стекло</a></li>
+        <li><a href="#">Антибликовое стекло</a></li>
+      </ul>
+    </div>
+    <div class="total">Итого: <span class="pull-right">1600р.</span></div>
+
+
+    <button class="pull-right big-button" type="button" name="save" id="save" tabindex="15">Купить</button>
+  </div>
+
+  <div class="picture-view clearfix">
+    <div class="picture-border">
+      <%= image_tag @photo.src_preview.url %>
+      <ul>
+        <li><a onclick="changeImg1('changedImg');">1</a></li>
+        <li><a onclick="changeImg2('changedImg');">2</a></li>
+        <li><a onclick="changeImg3('changedImg');">3</a></li>
+      </ul>
+    </div>
+
+    <div class="picture-description">
+      <div class="links pull-right">
+        <span class="label">Рассказать друзьям:</span>
+        <ul>
+          <li class="fb">
+            <a href="http://www.facebook.com">facebook</a>
+          </li>
+          <li class="vk">
+            <a href="http://vk.com">vkontakte</a>
+          </li>
+          <li class="gp">
+            <a href="http://plus.google.com">google+</a>
+          </li>
+          <li class="ok">
+            <a href="http://odnoklassniki.ru">odnoklassniki</a>
+          </li>
+          <li class="pin">
+            <a href="#">odnoklassniki</a>
+          </li>
+          <li class="tw">
+            <a href="http://twitter.com">twitter</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rating">
+        Рейтинг: 47
+        <a class="ico ico-plus" onClick="expandit('tooltip-rating')"></a>
+                            <span class="tooltip tooltip-right" id="tooltip-rating" style="display:none">
+                                <p>Чтобы голосовать за работу, необходимо <strong>зарегистрироваться</strong></p>
+                                <div class="links">
+                                  <span class="label">Без регистрации Вы можете поделиться ссылкой:</span>
+                                  <ul>
+                                    <li class="fb">
+                                      <a href="http://www.facebook.com">facebook</a>
+                                    </li>
+                                    <li class="vk">
+                                      <a href="http://vk.com">vkontakte</a>
+                                    </li>
+                                    <li class="gp">
+                                      <a href="http://plus.google.com">google+</a>
+                                    </li>
+                                    <li class="ok">
+                                      <a href="http://odnoklassniki.ru">odnoklassniki</a>
+                                    </li>
+                                    <li class="pin">
+                                      <a href="#">odnoklassniki</a>
+                                    </li>
+                                    <li class="tw">
+                                      <a href="http://twitter.com">twitter</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                            </span>
+      </div>
+
+
+      <p>Москва, 2011</p>
+      <p><strong>Техника, разделы:</strong> фотография, абстракция, пейзаж</p>
+      <p><strong>Тэги:</strong> красный, белый, гостинная, кабинет, скульптура.. показать все</p>
+
+      <p>Работа была создана в рамках серии “Ночное движение”, над которой автор работала последние
+        2 года. При ее изготовлении был использован труд 300 гастеров-мексиканцев со светящимися
+        лопатами. Выставлялась в рамках Венесуэльской биеннале, находится в коллекциях
+        В. Кудрина и Усамы Бен-Ладена
+      </p>
+
+    </div>
+  </div>
+
+
+</div>

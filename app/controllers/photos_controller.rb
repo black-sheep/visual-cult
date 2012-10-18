@@ -22,7 +22,11 @@ class PhotosController < ApplicationController
         :sell           => params[:select][:sell],
         :description    => params[:description],
         :height         => params[:height],
-        :width          => params[:width]
+        :width          => params[:width],
+        :color_id       => params[:select][:color1],
+        :colord_id      => params[:select][:color2],
+        :rubrik_id      => params[:select][:rubrik1],
+        :rubrikd_id     => params[:select][:rubrik2]
     )
     if @photo.save
       redirect_to user_gallery_photo_path(params[:user_id], @gallery, @photo)
@@ -32,6 +36,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @photo = @gallery.photos.find(params[:id])
   end
 
   def edit

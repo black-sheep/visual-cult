@@ -9,6 +9,7 @@ gem 'russian'
 gem 'devise'
 gem 'client_side_validations'
 gem 'kaminari'
+gem 'bb-ruby'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

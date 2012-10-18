@@ -15,6 +15,14 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :circulation_id
       t.integer :decor
 
+      t.integer :technology_id
+      t.integer :color_id
+      t.integer :colord_id
+      t.integer :rubrik_id
+      t.integer :rubrikd_id
+
+      t.integer :raiting
+
       t.timestamps
     end
   end

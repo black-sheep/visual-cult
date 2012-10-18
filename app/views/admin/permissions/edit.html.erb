@@ -1,0 +1,15 @@
+<div class="container">
+  <%= form_tag({:controller => :permissions, :action => :update}, :method => :put) do %>
+      <% @permissions.all.each do |permission| %>
+          <% if @user.permissions.exists?(permission) %>
+              <%=  permission.name %>
+              <%= check_box_tag 'permissions[]', permission.name, true %>
+          <% else %>
+              <%= permission.name %>
+              <%= check_box_tag 'permissions[]', permission.name, false %>
+          <% end %>
+          <br />
+      <% end %>
+      <br /><%= content_tag :button, t('save') %>
+  <% end %>
+</div>

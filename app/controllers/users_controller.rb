@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # :TODO Проверка существования города. Иначе ошибка. Добавить валидацию.
     @user = User.find(params[:id])
   end
 

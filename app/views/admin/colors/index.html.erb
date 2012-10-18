@@ -1,0 +1,6 @@
+<%= link_to t('add'), new_admin_color_path %> <br />
+<% @colors.all.each do |color| %>
+    <%= color.name %>
+    <%= link_to t('edit'), edit_admin_color_path(color.id) %>
+    <%= link_to t('delete'), admin_color_path(color.id), :method => :delete%>  <br />
+<% end %>

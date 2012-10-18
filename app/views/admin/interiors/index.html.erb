@@ -1,0 +1,6 @@
+<%= link_to t('add'), new_admin_interior_path %> <br />
+<% @interiors.all.each do |interior| %>
+    <%= interior.name %>
+    <%= link_to t('edit'), edit_admin_interior_path(interior.id) %>
+    <%= link_to t('delete'), admin_interior_path(interior.id), :method => :delete%>  <br />
+<% end %>

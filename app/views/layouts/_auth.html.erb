@@ -23,7 +23,27 @@
 
   </div>
   <% else %>
-      <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
+
+<ul class="auth">
+    <li class="first">
+        <a href="#username" onClick="expandit('profile-link')"><%= current_user.login %>&#9660;</a>
+        <ul id="profile-link" class="popup" style="display:none">
+            <li><a href="#">Добавить работу</a></li>
+            <li><a href="#">Редактировать профиль</a></li>
+            <li><a href="#">Фото на утверждение</a></li>
+        </ul>
+    </li><li>
+    <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
+    </li>
+</ul>
+
+        <form action="/search.php" method="post" class="search">
+          <input type="submit" class="submit" text="search" />
+          <input type="text" class="text" placeholder="Поиск" />
+        </form>
+
+        <a  class="basket" href="#"><i class="ico ico-basket"></i> 2</a>
+
   <% end %>
 
 </div>

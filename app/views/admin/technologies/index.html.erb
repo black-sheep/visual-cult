@@ -1,0 +1,6 @@
+<%= link_to t('add'), new_admin_technology_path %> <br />
+<% @technologies.all.each do |technology| %>
+    <%= technology.name %>
+    <%= link_to t('edit'), edit_admin_technology_path(technology.id) %>
+    <%= link_to t('delete'), admin_technology_path(technology.id), :method => :delete%>  <br />
+<% end %>

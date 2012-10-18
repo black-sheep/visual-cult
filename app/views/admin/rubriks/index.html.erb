@@ -1,0 +1,6 @@
+<%= link_to t('add'), new_admin_rubrik_path %> <br />
+<% @rubriks.all.each do |rubrik| %>
+    <%= rubrik.name %>
+    <%= link_to t('edit'), edit_admin_rubrik_path(rubrik.id) %>
+    <%= link_to t('delete'), admin_rubrik_path(rubrik.id), :method => :delete%>  <br />
+<% end %>

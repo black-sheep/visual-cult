@@ -1,0 +1,6 @@
+<%= content_tag :div, 'Редактировать раздел' %>
+
+<%= form_for @rubrik, :url => {:action => 'update'} do |f| %>
+    <%= f.text_field 'name' %>
+    <%=	content_tag :button, t('update') %>
+<% end %>

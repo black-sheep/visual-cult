@@ -17,10 +17,6 @@ class CreateRoles < ActiveRecord::Migration
     add_index :permissions_roles, [:role_id, :permission_id], name: :permissions_roles_idx
     add_index :roles_users, [:role_id, :user_id], name: :roles_users_idx
 
-    #add_column :roles, :requestable, :boolean, default: false
-    #add_column :users, :requested_role_id, :integer
-    #add_index :users, :requested_role_id
-
     Role.create(:name => 'Admin')
     Role.create(:name => 'Photographer')
     Role.create(:name => 'Customer')

@@ -6,7 +6,7 @@ class NewsController < ApplicationController
   before_filter :can_delete_news, only: [:destroy]
 
   def index
-    @news = New.order('created_at DESC')
+    @news = New.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def new
