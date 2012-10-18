@@ -21,6 +21,8 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :rubrik_id
       t.integer :rubrikd_id
 
+      t.string  :tags
+
       t.integer :raiting
 
       t.timestamps

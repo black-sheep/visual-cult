@@ -26,7 +26,8 @@ class PhotosController < ApplicationController
         :color_id       => params[:select][:color1],
         :colord_id      => params[:select][:color2],
         :rubrik_id      => params[:select][:rubrik1],
-        :rubrikd_id     => params[:select][:rubrik2]
+        :rubrikd_id     => params[:select][:rubrik2],
+        :tags           => params[:tags]
     )
     if @photo.save
       redirect_to user_gallery_photo_path(params[:user_id], @gallery, @photo)

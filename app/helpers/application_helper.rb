@@ -34,4 +34,21 @@ module ApplicationHelper
 
     permissions
   end
+
+  def top_menu
+    if ['galleries', 'photos'].include?(controller_name)
+      render 'layouts/menus/auth_top_menu'
+    elsif controller_name == 'users' && action_name != 'index'
+      render 'layouts/menus/auth_top_menu'
+    else
+      render 'layouts/menus/top_menu'
+    end
+  end
+
+  def get_filter
+    unless ['users', 'galleries', 'photos'].include?(controller_name)
+      render 'layouts/menus/filter'
+    end
+  end
+
 end

@@ -9,6 +9,7 @@
 //= require lib/modernizr-2.5.3.min.js
 //= require default.js
 //= require cusel.js
+//= require init.js
 
 //= require markitup/jquery.markitup
 //= require markitup/sets/default/set

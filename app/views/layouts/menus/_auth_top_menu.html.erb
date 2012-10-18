@@ -1,13 +1,13 @@
 <ul class="nav author-nav">
   <li class="author-name">
-    <span>Ирина Нешева</span>
+    <span><%= @user.name %> <%= @user.second_name %></span>
     <a class="add-favorite" href="#1">Добавить в избранное</a>
   </li>
   <li>
-    <a class="active" href="#2">Работы</a>
+    <%= link_to 'Работы', root_path %>
     <ul>
       <li>
-        <a href="#1">Серия и описание</a>
+        <%= link_to 'Серия и описания', user_galleries_path(@user.id) %>
       </li>
       <li>
         <a href="#2">Список серий</a>
@@ -18,7 +18,7 @@
     </ul>
   </li>
   <li>
-    <a href="#3">Об авторе</a>
+    <%= link_to 'Об авторе', @user %>
     <ul>
       <li>
         <a href="#1">Статистика автора</a>
@@ -26,3 +26,5 @@
     </ul>
   </li>
 </ul>
+
+<% # :TODO не забыть о class="active" у меню %>

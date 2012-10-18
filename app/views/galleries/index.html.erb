@@ -1,5 +1,24 @@
-<ul>
-  <% @galleries.each do |gallery| %>
-    <li><%= link_to gallery.name, user_gallery_path(gallery.user_id, gallery.id) %></li>
-  <% end %>
-</ul>
+<div id="main-content">
+  <div class="container author-page">
+  <% @galleries.all.each do |gallery| %>
+    <ul class="gallery">
+      <% gallery.photos.each do |photo| %>
+      <li>
+            <%= link_to image_tag(photo.src_preview.thumb.url), '' %>
+            <span class="info">
+                <a class="seria"><%= gallery.name %></a>
+                <span class="price">??? р.</span>
+                <%= link_to '', edit_user_gallery_photo_path(@user.id, gallery.id, photo.id), :class => 'edit' %>
+                <span class="title"><%= photo.name %></span>
+            </span>
+      </li>
+      <% end %>
+    </ul>
+
+    <div class="definition">
+      <%= gallery.name %> <%= link_to '', edit_user_gallery_path(@user.id, gallery.id), :class => 'ico ico-pencil' %>
+      <p><%= gallery.description %></p>
+    </div>
+    <% end %>
+  </div>
+</div>

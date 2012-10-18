@@ -29,6 +29,14 @@ ru:
   edit: "Редактировать"
   add: "Добавить"
   update: "Обновить"
+  admin:
+    admin_page: "Страница администратора"
+    users: "Пользователи"
+    permissions: "Права"
+    colors: "Цвета"
+    interiors: "Типы интерьера"
+    rubriks: "Рубрики"
+    technologies: "Технологии"
   news:
     news: "Новости"
     tags: "Теги"

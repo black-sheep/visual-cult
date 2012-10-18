@@ -1,6 +1,6 @@
 VisualCultV2::Application.routes.draw do
 
-  get "permissions/index"
+  get '/admin' => 'pages#admin'
 
   namespace :admin do
     resources :technologies, :colors, :rubriks, :interiors, :permissions

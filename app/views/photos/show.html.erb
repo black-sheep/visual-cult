@@ -98,71 +98,20 @@
     </div>
 
     <div class="picture-description">
-      <div class="links pull-right">
-        <span class="label">Рассказать друзьям:</span>
-        <ul>
-          <li class="fb">
-            <a href="http://www.facebook.com">facebook</a>
-          </li>
-          <li class="vk">
-            <a href="http://vk.com">vkontakte</a>
-          </li>
-          <li class="gp">
-            <a href="http://plus.google.com">google+</a>
-          </li>
-          <li class="ok">
-            <a href="http://odnoklassniki.ru">odnoklassniki</a>
-          </li>
-          <li class="pin">
-            <a href="#">odnoklassniki</a>
-          </li>
-          <li class="tw">
-            <a href="http://twitter.com">twitter</a>
-          </li>
-        </ul>
-      </div>
+        <%= render 'layouts/social/social_photo_under_photo' %>
 
-      <div class="rating">
-        Рейтинг: 47
+        <div class="rating">
+        Рейтинг: <%= @photo.raiting %>
         <a class="ico ico-plus" onClick="expandit('tooltip-rating')"></a>
-                            <span class="tooltip tooltip-right" id="tooltip-rating" style="display:none">
-                                <p>Чтобы голосовать за работу, необходимо <strong>зарегистрироваться</strong></p>
-                                <div class="links">
-                                  <span class="label">Без регистрации Вы можете поделиться ссылкой:</span>
-                                  <ul>
-                                    <li class="fb">
-                                      <a href="http://www.facebook.com">facebook</a>
-                                    </li>
-                                    <li class="vk">
-                                      <a href="http://vk.com">vkontakte</a>
-                                    </li>
-                                    <li class="gp">
-                                      <a href="http://plus.google.com">google+</a>
-                                    </li>
-                                    <li class="ok">
-                                      <a href="http://odnoklassniki.ru">odnoklassniki</a>
-                                    </li>
-                                    <li class="pin">
-                                      <a href="#">odnoklassniki</a>
-                                    </li>
-                                    <li class="tw">
-                                      <a href="http://twitter.com">twitter</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                            </span>
-      </div>
+        <%= render 'layouts/social/social_photo_void' %>
+        </div>
 
 
-      <p>Москва, 2011</p>
-      <p><strong>Техника, разделы:</strong> фотография, абстракция, пейзаж</p>
-      <p><strong>Тэги:</strong> красный, белый, гостинная, кабинет, скульптура.. показать все</p>
+        <p><%= @photo.city %>, <%= @photo.date_create %></p>
+        <p><strong>Техника, разделы:</strong> <%=  %></p>
+        <p><strong>Тэги:</strong> <%= str_to_links(@photo.tags) %></p>
 
-      <p>Работа была создана в рамках серии “Ночное движение”, над которой автор работала последние
-        2 года. При ее изготовлении был использован труд 300 гастеров-мексиканцев со светящимися
-        лопатами. Выставлялась в рамках Венесуэльской биеннале, находится в коллекциях
-        В. Кудрина и Усамы Бен-Ладена
-      </p>
+        <p><%= @photo.description %></p>
 
     </div>
   </div>
