@@ -14,6 +14,10 @@ module PhotosHelper
     str.split(/\s*,\s*/).map(&:to_s).map{ |tag| (link_to tag, '#')  }.join(', ').html_safe
   end
 
+  def date_to_db_format(year)
+    Date.civil(year.to_i).to_formatted_s(:db)
+  end
+
   def get_rubriks_and_tech(*obj)
     # :TODO Доделать для фотографии show раздел и техники
 

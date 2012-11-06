@@ -46,7 +46,7 @@
           <li><a class=""  onclick="changeImg2('changedImgPreview');">2</a></li>
           <li><a class=""  onclick="changeImg3('changedImgPreview');">3</a></li>
         </ul>
-        <img id="changedImgPreview" src="i/_tmp/pic1-big.jpg" alt="">
+        <%= image_tag @photo.src_preview.thumb.url %>
       </div>
 
       <p><small>42*57см по внешней стороне</small></p>

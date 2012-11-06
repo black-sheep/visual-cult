@@ -46,8 +46,32 @@ module ApplicationHelper
   end
 
   def get_filter
-    unless ['users', 'galleries', 'photos'].include?(controller_name)
+    unless ['users', 'galleries'].include?(controller_name)
       render 'layouts/menus/filter'
+    end
+  end
+
+  def user_name
+    if @user.nil?
+      User.find(params[:user_id]).name
+    else
+      @user.name
+    end
+  end
+
+  def user_second_name
+    if @user.nil?
+      User.find(params[:user_id]).second_name
+    else
+      @user.second_name
+    end
+  end
+
+  def user_id
+    if @user.nil?
+      params[:user_id]
+    else
+      @user.id
     end
   end
 

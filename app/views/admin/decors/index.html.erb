@@ -1,0 +1,6 @@
+<%= link_to t('add'), new_admin_decor_path %> <br />
+<% @decors.all.each do |decor| %>
+    <%= decor.name %>
+    <%= link_to t('edit'), edit_admin_decor_path(decor.id) %>
+    <%= link_to t('delete'), admin_decor_path(decor.id), :method => :delete%>  <br />
+<% end %>

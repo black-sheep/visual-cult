@@ -45,6 +45,7 @@ class CreatePermissions < ActiveRecord::Migration
                 :city => 'Msc'
                 )
     User.find(1).roles << Role.find_by_name('Admin')
+    User.find(1).roles.delete(Role.find_by_name('Customer'))
 
   end
 end

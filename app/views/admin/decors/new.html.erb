@@ -1,0 +1,6 @@
+<%= content_tag :div, 'Добавить интерьер' %>
+
+<%= form_for @decor, :url => {:action => 'create'} do |f| %>
+    <%= f.text_field 'name' %>
+    <%=	content_tag :button, t('save') %>
+<% end %>

@@ -12,8 +12,21 @@ class CreatePhotos < ActiveRecord::Migration
       t.string  :description
       t.integer :width
       t.integer :height
-      t.integer :circulation_id
-      t.integer :decor
+
+      t.integer :edition_one
+      t.integer :edition_two
+      t.integer :edition_three
+
+      t.integer :size_one
+      t.integer :size_two
+      t.integer :size_three
+      t.integer :price_one
+      t.integer :price_two
+      t.integer :price_three
+      t.integer :decor_one
+      t.integer :decor_two
+      t.integer :decor_three
+
 
       t.integer :technology_id
       t.integer :color_id

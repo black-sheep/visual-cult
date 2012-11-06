@@ -1,10 +1,24 @@
 <div id="sidebar">
   <ul>
     <li>
-      <a href="#1">Техника</a>
+      <a href="javascript:void(0)" onclick="openMenu('tech'); return false">Техника</a>
+      <div id="tech" class="defmenu">
+        <ul>
+        <% get_technologies.all.each do |tech| %>
+            <li><%= tech.name %></li>
+        <% end %>
+        </ul>
+      </div>
     </li>
     <li>
-      <a href="#2">Раздел</a>
+      <a href="javascript:void(0)" onclick="openMenu('rubrik')">Раздел</a>
+      <div id="rubrik" class="defmenu">
+        <ul>
+          <% get_rubriks.all.each do |rubrik| %>
+            <li><%= rubrik.name %></li>
+          <% end %>
+        </ul>
+      </div>
     </li>
     <li>
       <%= link_to 'Авторы', users_path %>
@@ -19,13 +33,24 @@
       <a href="#6">Формат</a>
     </li>
     <li>
-      <a href="#7">Интерьер</a>
+      <a href="javascript:void(0)" onclick="openMenu('interior')">Интерьер</a>
+      <div id="interior" class="defmenu">
+        <ul>
+            <% get_interiors.all.each do |interior| %>
+                <li><%= interior.name %></li>
+            <% end %>
+        </ul>
+      </div>
     </li>
     <li>
-      <a href="#8">Интерьер</a>
-    </li>
-    <li>
-      <a href="#9">Цвет</a>
+      <a href="javascript:void(0)" onclick="openMenu('color'); return false">Цвет</a>
+      <div id="color" class="defmenu">
+        <ul>
+        <% get_colors.all.each do |color| %>
+        <li><%= color.name %></li>
+        <% end %>
+        </ul>
+      </div>
     </li>
     <li>
       <a href="#10">Цена</a>

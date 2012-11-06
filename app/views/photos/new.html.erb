@@ -5,9 +5,9 @@
 <div class="row-fluid">
     <div class="span4">
       <h3>1: <%= t('photo.upload_miniature') %></h3>
-      <%= file_field_tag :src_preview, :maxlength => 64, :tabindex => 1 %>
+      <%= file_field_tag :src_preview, :maxlength => 64, :tabindex => 1, :onchange => "readURL(this, 'mainImg')" %>
       <small><%= t('photo.miniature_param') %>.</small>
-      <img class="stretch" src="i/_tmp/pic-07.jpg" alt="">
+      <img id="mainImg" class="stretch"  alt="">
 
       <h3>2: <%= t('photo.two_part_of_origin') %></h3>
 
@@ -34,7 +34,7 @@
       </div>
       <div class="span4 lineForm">
         <label><%= t('photo.create_year') %></label>
-        <%= select_year Date.today, :field_name => 'date_create', :tabindex => 5, :start_year => 1980, :end_year => Time.now.year %>
+        <%= select_year Date.today, {:field_name => 'date_create', :start_year => 1980, :end_year => Time.now.year} , {:tabindex=>5}  %>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@
     <label><%= t('photo.gallery_name') %></label>
     <div class="row-fluid">
       <div class="span6 lineForm">
-        <%= select "select", "gallery_id", Gallery.gallery_by_user_id(params[:user_id]).collect {|p| [p.name, p.id]}, :tabindex => 6 %>
+        <%= select "select", "gallery_id", Gallery.gallery_by_user_id(params[:user_id]).collect {|p| [p.name, p.id]}, {}, {:selected => params[:gallery_id], :tabindex => 6} %>
       </div>
       <div class="span6">
         <%= text_field_tag 'gallery_name', nil, :maxlength => 64, :tabindex => 7, :class => 'span12' %>
@@ -76,7 +76,7 @@
 
       <div class="span6 lineForm">
         <label><%= t('photo.for_sale') %></label>
-        <%= select 'select', 'sell', [['Да', 1], ['Нет', 0]], :tabindex => 9 %>
+        <%= select 'select', 'sell', [['Да', 1], ['Нет', 0]], {}, {:tabindex => 9} %>
       </div>
     </div>
   </div>
@@ -101,75 +101,138 @@
 <div class="row-fluid">
   <div class="span6">
     <label><%= t('photo.orign') %></label>
-    <%= text_field_tag 'height', nil, :class => 'span3', :maxindex => 64, :tabindex => 11 %> *
-    <%= text_field_tag 'width', nil, :class => 'span3', :maxindex => 64, :tabindex => 12 %>
+    <%= text_field_tag 'width', nil, :class => 'span3', :maxindex => 64, :tabindex => 11 %> *
+    <%= text_field_tag 'height', nil, :class => 'span3', :maxindex => 64, :tabindex => 12 %>
     <small><%= t('photo.unit') %></small>
   </div>
   <div class="span6">
-    <p>Размеры оригинала используются для
-      определения макс. размера отпечатка.</p>
+    <p><%= t('photo.help.help_five') %>.</p>
   </div>
 </div>
 
 <div class="row-fluid top-space">
   <div class="span6">
-    Вариант работы:
-    <a class="selected" href="#" >1</a>
-    <a class="non-selected" href="#" >2</a>
-    <a class="non-selected" href="#" >3</a>
+    <%= t('photo.options_img') %>:
+    <a class="selected" href="javascript:void(0)" onclick="showLayer('a',this)">1</a>
+    <a class="non-selected" href="javascript:void(0)" onclick="showLayer('b',this)">2</a>
+    <a class="non-selected" href="javascript:void(0)" onclick="showLayer('c', this)">3</a>
   </div>
   <div class="span6">
-    <p>Можно создать не более 3 вариантов</p>
+    <p><%= t('photo.help.help_six') %></p>
   </div>
 </div>
 
-<div class="row-fluid top-space">
+<div class="row-fluid top-space" id="dlayera">
   <div class="span6">
     <div class="row-fluid">
       <div class="span6">
-        <label>Длинная сторона </label>
-        <input class="span6" type="text" name="left" maxlength="64" tabindex="13"/>
-        <small>20-100 см</small>
+        <%= label_tag 'size_one', t('photo.long_side') %>
+        <%= text_field_tag 'size_one', nil, :maxlength => 64, :tabindex => 13, :class => 'span6' %>
+        <small>20-100 <%= t('photo.cm') %></small>
       </div>
       <div class="span6">
-        <label>Цена</label>
-        <input class="span6" type="text" name="left" maxlength="64" tabindex="14"/>
-        <small>от 1000р</small>
+        <%= label_tag 'price_one', t('photo.price') %>
+        <%= text_field_tag 'price_one', nil, :maxlength => 64, :tabindex => 14, :class => 'span6' %>
+        <small><%= t('photo.from') %> 1000р</small>
       </div>
     </div>
   </div>
   <div class="span6">
-    <p>Высокая цена может ограничить спрос,
-      ориентируйтесь на аналогичные работы</p>
+    <p><%= t('photo.help.help_seven') %></p>
   </div>
 </div>
 
-
-
-<div class="row-fluid top-space">
+<div class="row-fluid top-space deflayer" id="dlayerb">
   <div class="span6">
     <div class="row-fluid">
-      <div class="span6 lineForm">
-        <label>Тираж</label>
-        <select name="bay" id="tirage" tabindex="15">
-          <option value="100">100</option>
-          <option value="200">200</option>
-          <option value="500">500</option>
-        </select>
+      <div class="span6">
+        <%= label_tag 'size_two', t('photo.long_side') %>
+        <%= text_field_tag 'size_two', nil, :maxlength => 64, :tabindex => 13, :class => 'span6' %>
+        <small>20-100 <%=  t('photo.cm')%></small>
       </div>
-      <div class="span6 lineForm">
-        <label>Оформление</label>
-        <select name="bay" id="design" tabindex="16">
-          <option value="gothic">Готика</option>
-          <option value="barokko">Барокко</option>
-          <option value="impres">Импрессионизм</option>
-        </select>
+      <div class="span6">
+        <%= label_tag 'price_two', t('photo.price') %>
+        <%= text_field_tag 'price_two', nil, :maxlength => 64, :tabindex => 14, :class => 'span6' %>
+        <small><%= t('photo.from') %> 1000р</small>
       </div>
     </div>
   </div>
   <div class="span6">
-    <p>Работы с подписью или оформлением
-      требуют контакта с автором при продаже</p>
+    <p><%= t('photo.help.help_seven') %></p>
+  </div>
+</div>
+
+<div class="row-fluid top-space deflayer" id="dlayerc">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span6">
+        <%= label_tag 'size_three', t('photo.long_side') %>
+        <%= text_field_tag 'size_three', nil, :maxlength => 64, :tabindex => 13, :class => 'span6' %>
+        <small>20-100 <%=  t('photo.cm')%></small>
+      </div>
+      <div class="span6">
+        <%= label_tag 'price_three', t('photo.price') %>
+        <%= text_field_tag 'price_three', nil, :maxlength => 64, :tabindex => 14, :class => 'span6' %>
+        <small><%= t('photo.from') %> 1000р</small>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <p><%= t('photo.help.help_seven') %></p>
+  </div>
+</div>
+
+<div class="row-fluid top-space" id="layera">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.edition') %>
+        <%= select 'select', 'edition_one', [100,200,500].collect {|p| p}, {}, {:tabindex => 14} %>
+      </div>
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.decor') %>
+        <%= select 'select', 'decor_one', Decor.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 15} %>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <p><%= t('photo.help.help_eight') %></p>
+  </div>
+</div>
+
+<div class="row-fluid top-space defmenu" id="layerb">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.edition') %>
+        <%= select 'select', 'edition_two', [100,200,500].collect {|p| p}, {}, {:tabindex => 14} %>
+      </div>
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.decor') %>
+        <%= select 'select', 'decor_two', Decor.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 15} %>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <p><%= t('photo.help.help_eight') %></p>
+  </div>
+</div>
+
+<div class="row-fluid top-space defmenu" id="layerc">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.edition') %>
+        <%= select 'select', 'edition_three', [100,200,500].collect {|p| p}, {}, {:tabindex => 14} %>
+      </div>
+      <div class="span6 lineForm">
+        <%= label_tag t('photo.decor') %>
+        <%= select 'select', 'decor_three', Decor.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 15} %>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <p><%= t('photo.help.help_eight') %></p>
   </div>
 </div>
 
@@ -180,17 +243,17 @@
       <div class="span4 lineForm">
 
         <%= label_tag t('photo.technology') %>
-        <%= select 'select', 'technology', Technology.all.collect {|p| [p.name, p.id]}, :tabindex => 17 %>
+        <%= select 'select', 'technology', Technology.all.collect {|p| [p.name, p.id]}, {}, {:tabindex => 17} %>
 
       </div>
       <div class="span4 lineForm">
-        <%= label_tag :color, 'Цвет' %>
-        <%= select 'select', 'color1', Color.all.collect {|p| [p.name, p.id]}, :tabindex => 18 %>
+        <%= label_tag :color, t('photo.color') %>
+        <%= select 'select', 'color1', Color.all.collect {|p| [p.name, p.id]}, {}, {:tabindex => 18} %>
       </div>
 
       <div class="span4 lineForm">
-        <%= label_tag :color, 'Цвет' %>
-        <%= select 'select', 'color2', Color.all.collect {|p| [p.name, p.id]}, :tabindex => 19 %>
+        <%= label_tag :color, t('photo.color') %>
+        <%= select 'select', 'color2', Color.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 19} %>
       </div>
     </div>
   </div>
@@ -198,23 +261,22 @@
     <p><%= t('photo.help.help_tens')%></p>
   </div>
 </div>
-<div class="row-fluid top-space">
 
+<div class="row-fluid top-space">
   <div class="span12">
     <%= label_tag t('photo.part') %>
     <div class="row-fluid">
       <div class="span3 lineForm">
-        <%= select 'select', 'rubrik1', Rubrik.all.collect {|p| [p.name, p.id]}, :tabindex => 20 %>
+        <%= select 'select', 'rubrik1', Rubrik.all.collect {|p| [p.name, p.id]}, {}, {:tabindex => 20} %>
       </div>
       <div class="span3 lineForm">
-        <%= select 'select', 'rubrik2', Rubrik.all.collect {|p| [p.name, p.id]}, :tabindex => 21 %>
+        <%= select 'select', 'rubrik2', Rubrik.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 21} %>
       </div>
     </div>
   </div>
-
 </div>
-<div class="row-fluid top-space">
 
+<div class="row-fluid top-space">
   <div class="span6">
     <%= label_tag t('photo.interior_type') %>
     <div class="row-fluid">
@@ -245,33 +307,31 @@
 
     <div class="row-fluid">
       <div class="span6">
-        <label>Подборка</label>
+        <label><%= t('photo.selection') %></label>
         <input class="span12" type="text" name="podborka" maxlength="64" tabindex="25"/>
       </div>
       <div class="span6">
-        <label>Акция</label>
+        <label><%= t('photo.action') %></label>
         <input class="span12" type="text" name="action" maxlength="64" tabindex="26"/>
       </div>
     </div>
   </div>
   <div class="span6">
-    <p>Заполняется модератором</p>
+    <p><%= t('photo.help.help_thirteen') %></p>
   </div>
 </div>
 <div class="row-fluid top-space">
   <div class="span6">
-
     <%= content_tag :button, t(:save), :tabindex => 27 %>
-
-    <button type="button" name="enter" class="pull-right" id="clear-info" tabindex="28">Удалить</button>
+    <button type="button" name="enter" class="pull-right" id="clear-info" tabindex="28"><%= t('delete') %></button>
   </div>
   <div class="span6">
-    <button type="button" name="enter" id="lock-info" tabindex="29">Запретить правки</button>
+    <button type="button" name="enter" id="lock-info" tabindex="29"><%= t('photo.prohibit_changes') %></button>
   </div>
 </div>
 <div class="row-fluid top-space">
   <div class="span6">
-    <h3>5: Дождитесь утверждения Вашей работы. Возможно, с Вами свяжуться для внесения правок</h3>
+    <h3>5: <%= t('photo.help.help_last') %></h3>
   </div>
   <div class="span6"></div>
 </div>

@@ -14,6 +14,7 @@
 //= require markitup/jquery.markitup
 //= require markitup/sets/default/set
 
+//= require helpers
 
 
 

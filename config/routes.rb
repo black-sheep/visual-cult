@@ -3,7 +3,7 @@ VisualCultV2::Application.routes.draw do
   get '/admin' => 'pages#admin'
 
   namespace :admin do
-    resources :technologies, :colors, :rubriks, :interiors, :permissions
+    resources :technologies, :colors, :rubriks, :interiors, :permissions, :decors
   end
 
   devise_for :users
