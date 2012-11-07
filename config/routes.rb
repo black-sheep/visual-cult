@@ -2,6 +2,8 @@ VisualCultV2::Application.routes.draw do
 
   get '/admin' => 'pages#admin'
 
+  match '/vote/:id' => 'jscripts#vote'
+
   namespace :admin do
     resources :technologies, :colors, :rubriks, :interiors, :permissions, :decors
   end

@@ -23,16 +23,16 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :price_one
       t.integer :price_two
       t.integer :price_three
-      t.integer :decor_one
-      t.integer :decor_two
-      t.integer :decor_three
+      t.integer :decor_one_id
+      t.integer :decor_two_id
+      t.integer :decor_three_id
 
 
       t.integer :technology_id
-      t.integer :color_id
-      t.integer :colord_id
-      t.integer :rubrik_id
-      t.integer :rubrikd_id
+      t.integer :color_one_id
+      t.integer :color_two_id
+      t.integer :rubrik_one_id
+      t.integer :rubrik_two_id
 
       t.string  :tags
 

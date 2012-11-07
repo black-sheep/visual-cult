@@ -191,7 +191,7 @@
       </div>
       <div class="span6 lineForm">
         <%= label_tag t('photo.decor') %>
-        <%= select 'select', 'decor_one', Decor.all.collect {|p| [p.name, p.id]}, {:include_blank => ''}, {:tabindex => 15} %>
+        <%= select 'select', 'decor_one', Decor.all.collect {|p| [p.name, p.id]}, {}, {:tabindex => 15} %>
       </div>
     </div>
   </div>
@@ -205,7 +205,7 @@
     <div class="row-fluid">
       <div class="span6 lineForm">
         <%= label_tag t('photo.edition') %>
-        <%= select 'select', 'edition_two', [100,200,500].collect {|p| p}, {}, {:tabindex => 14} %>
+        <%= select 'select', 'edition_two', [100,200,500].collect {|p| p}, {:include_blank => ''}, {:tabindex => 14} %>
       </div>
       <div class="span6 lineForm">
         <%= label_tag t('photo.decor') %>
@@ -223,7 +223,7 @@
     <div class="row-fluid">
       <div class="span6 lineForm">
         <%= label_tag t('photo.edition') %>
-        <%= select 'select', 'edition_three', [100,200,500].collect {|p| p}, {}, {:tabindex => 14} %>
+        <%= select 'select', 'edition_three', [100,200,500].collect {|p| p}, {:include_blank => ''}, {:tabindex => 14} %>
       </div>
       <div class="span6 lineForm">
         <%= label_tag t('photo.decor') %>

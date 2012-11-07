@@ -43,3 +43,17 @@ function readURL(input, div)
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function vote(curLink)
+{
+    link = $(curLink).attr('href');
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        success: function(html)
+        {
+            $('#votes').html(html);
+        }
+    });
+}

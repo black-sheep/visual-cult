@@ -101,15 +101,15 @@
         <%= render 'layouts/social/social_photo_under_photo' %>
 
         <div class="rating">
-        Рейтинг: <%= @photo.raiting %>
-        <a class="ico ico-plus" onClick="expandit('tooltip-rating')"></a>
+        <%= t('photo.raiting') %>: <span id="votes"><%= @photo.raiting %></span>
+        <a class="ico ico-plus" href="/vote/<%= @photo.id %>" onclick="vote(this); return false"></a>
         <%= render 'layouts/social/social_photo_void' %>
         </div>
 
 
         <p><%= @photo.city %>, <%= @photo.date_create %></p>
         <p><strong>Техника, разделы:</strong> <%=  %></p>
-        <p><strong>Тэги:</strong> <%= str_to_links(@photo.tags) %></p>
+        <p><strong><%= t('photo.tags') %>:</strong> <%= str_to_links(@photo.tags) %></p>
 
         <p><%= @photo.description %></p>
 
