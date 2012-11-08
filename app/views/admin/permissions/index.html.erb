@@ -1,3 +1,16 @@
-<% @users.all.each do |user| %>
-    <%= link_to user.login, edit_admin_permission_path(user.id) %>
-<% end %>
+<div class="container">
+  <div>
+    <span>Права ролей</span>
+    <ul>
+    <% @roles.all.each do |role| %>
+       <li><%= link_to role.name, edit_admin_permission_path(role.id) %> </li>
+    <% end %>
+    </ul>
+  </div>
+  <div>
+    <span>Назначение ролей пользователям</span>
+    <ul>
+      <li><%= link_to 'Роли пользователей', users_roles_path %></li>
+    </ul>
+  </div>
+</div>

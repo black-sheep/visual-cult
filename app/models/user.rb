@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                   :second_name, :name, :phone, :login, :birthday, :city, :about, :what_inspires, :avatar
   # attr_accessible :title, :body
 
+  has_many :blogs
   has_many :galleries
   has_many :permissions, :through => :roles
   has_and_belongs_to_many :roles

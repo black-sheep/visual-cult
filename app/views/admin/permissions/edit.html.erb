@@ -1,15 +1,11 @@
 <div class="container">
-  <%= form_tag({:controller => :permissions, :action => :update}, :method => :put) do %>
-      <% @permissions.all.each do |permission| %>
-          <% if @user.permissions.exists?(permission) %>
-              <%=  permission.name %>
-              <%= check_box_tag 'permissions[]', permission.name, true %>
-          <% else %>
-              <%= permission.name %>
-              <%= check_box_tag 'permissions[]', permission.name, false %>
-          <% end %>
-          <br />
-      <% end %>
-      <br /><%= content_tag :button, t('save') %>
-  <% end %>
+    <b>Роль</b>: "<%= @role.name %>"
+    <%= form_for @role, :url => { :action => :update } do |f|  %>
+        <ul>
+        <% Permission.all.each do |permission| %>
+              <li><%= f.check_box permission.id, { :checked => checked?(@role.id, permission.id) } %><%= permission.name %>  </li>
+        <% end %>
+        </ul>
+      <%= content_tag :button, t(:save) %>
+    <% end %>
 </div>

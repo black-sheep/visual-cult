@@ -57,3 +57,41 @@ function vote(curLink)
         }
     });
 }
+
+function takeRole(curr)
+{
+    values = $(curr).attr('id').split('_')
+
+    link = '/take_role/' + values[0] + '/' + values[1]
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        success: function(html)
+        {
+            $('#info').html('Роль пользователя ' + html.name + ' ' + html.second_name + ' была успешно изменена');
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

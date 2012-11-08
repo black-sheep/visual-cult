@@ -1,0 +1,16 @@
+<div class="container">
+  <div id="info"></div>
+    <ul>
+    <% @users.all.each do |user| %>
+        <li>
+          <div>
+            <%= user.name %> <%= user.second_name %>
+            <% Role.all.each do |role| %>
+                <%= role.name %>
+                <%= radio_button_tag user.id, role.id , select_role?(user.id, role.id), :onchange => 'takeRole(this)', :user => user.id %>
+            <%end  %>
+          </div>
+        </li>
+    <% end %>
+    </ul>
+</div>

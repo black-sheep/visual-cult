@@ -1,0 +1,21 @@
+<div class="container">
+  <ul class="news">
+    <% @blogs.all.each do |blog| %>
+        <li>
+          <div class="news-head">
+            <span class="date"><%= blog.created_at.strftime('%d.%m.%y, %H:%M') %></span>
+            <h2><%= blog.title %></h2>
+          </div>
+          <div class="news-body">
+            <%= image_tag blog.picture.url, :class => 'news-image' %>
+            <%= raw blog.text.bbcode_to_html %>
+          </div>
+          <div class="tags">
+            <strong><%= t('blog.tags') %>:</strong> <%= tags_by_blog_id(blog.id) %>
+          </div>
+          <%#= render 'layouts/social/social_news' %>
+        </li>
+    <% end %>
+  </ul>
+  <%#= paginate @news %>
+</div>

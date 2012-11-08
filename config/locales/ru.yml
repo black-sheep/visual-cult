@@ -30,6 +30,9 @@ ru:
   edit: "Редактировать"
   add: "Добавить"
   update: "Обновить"
+  blog:
+    new_blog_record: "Добавить новую запись в блог"
+    tags: "Теги"
   admin:
     admin_page: "Страница администратора"
     users: "Пользователи"
@@ -96,6 +99,11 @@ ru:
     models:
     attributes:
       new:
+        title: "Заголовок"
+        text: "Текст"
+        tags: "Теги"
+        picture: "Картинка"
+      blog:
         title: "Заголовок"
         text: "Текст"
         tags: "Теги"
