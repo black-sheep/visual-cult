@@ -6,6 +6,7 @@
     </script>
 <% end %>
 
+<div class="container">
 <%= form_for @new, :validate => true, :url => {:action => 'create'}, :html => { :multipart => true } do |f| %>
     <div class="row-fluid">
       <div class="span3">
@@ -22,4 +23,4 @@
     </div>
     <%= content_tag :button, t(:save), :tabindex => 4 %>
 <% end %>
-
+</div>

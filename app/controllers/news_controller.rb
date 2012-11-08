@@ -1,9 +1,8 @@
 class NewsController < ApplicationController
   include ApplicationHelper
+  include NewsHelper
 
-  before_filter :can_add_news, only: [:new, :create]
-  before_filter :can_edit_news, only: [:edit, :update]
-  before_filter :can_delete_news, only: [:destroy]
+  before_filter :have_permissions?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @news = New.order('created_at DESC').page(params[:page]).per(10)
@@ -41,18 +40,10 @@ class NewsController < ApplicationController
     redirect_to news_index_path
   end
 
-  # TODO: Завернуть 3 шляпных метода в одно прекрасное
-
-  def can_add_news
-    redirect_to news_index_path unless can?('create_news')
+  private
+  def have_permissions?
+    redirect_to news_index_path unless authenticate_user! && have_permissions_news(current_user.id)
   end
 
-  def can_edit_news
-    redirect_to news_index_path unless can?('edit_news')
-  end
-
-  def can_delete_news
-    redirect_to news_index_path unless can?('delete_news')
-  end
 
 end

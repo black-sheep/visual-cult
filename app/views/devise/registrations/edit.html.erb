@@ -1,7 +1,7 @@
 <div class="container">
-<h2>Редактирование профиля</h2>
+<h2><%= t('edit_profile') %></h2>
 
-<%= form_for(@user, :validate => true, :url => registration_path(:user), :html => { :method => :put }) do |f| %>
+<%= form_for(@user, :validate => true, :url => registration_path(:user), :html => { :method => :put, :multipart => true }) do |f| %>
     <div class="row-fluid">
       <div class="span3">
 
@@ -51,6 +51,9 @@
 
         <%= f.label :what_inspires %>
         <%= f.text_area :what_inspires, :size => '30x10', :tabindex => 13, :class => 'hight-middle' %>
+
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, :maxlength => 64, :tabindex => 14 %>
 
       </div>
     </div>

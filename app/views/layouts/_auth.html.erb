@@ -1,6 +1,5 @@
 <div class="pane">
   <% unless user_signed_in? %>
-
   <ul class="auth">
     <li class="first">
       <a href="#auth" onClick="expandit('auth_popup')"><%= t :login_in %></a>
@@ -10,7 +9,6 @@
     </li>
   </ul>
 
-
   <form action="/search.php" method="post" class="search">
     <input type="submit" class="submit" text="search" />
     <input type="text" class="text" placeholder="Поиск" />
@@ -18,35 +16,34 @@
 
   <div id="auth_popup" class="popup" style="display:none">
     <a class="close" href="#close_window" onClick="expandit('auth_popup')"><i class="ico ico-close">&nbsp;</i></a>
-
     <%= render 'devise/sessions/new' %>
-
   </div>
+
   <% else %>
 
-<ul class="auth">
-    <li class="first">
-        <a href="#username" onClick="expandit('profile-link')"><%= current_user.login %>&#9660;</a>
-        <ul id="profile-link" class="popup" style="display:none">
-          <% if current_user.roles.exists?(Role.find_by_name('Admin')) %>
-            <li><%= link_to t('admin.admin_page'), admin_path %></li>
-          <% else %>
-            <li><a href="#">Добавить работу</a></li>
-            <li><a href="#">Редактировать профиль</a></li>
-            <li><a href="#">Фото на утверждение</a></li>
-          <% end %>
-        </ul>
-    </li><li>
-    <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
-    </li>
-</ul>
+    <ul class="auth">
+        <li class="first">
+            <a href="#username" onClick="expandit('profile-link')"><%= current_user.login %>&#9660;</a>
+            <ul id="profile-link" class="popup" style="display:none">
+              <% if current_user.roles.exists?(Role.find_by_name('Admin')) %>
+                <li><%= link_to t('admin.admin_page'), admin_path %></li>
+              <% else %>
+                <li><a href="#">Добавить работу</a></li>
+                <li><%= link_to 'Редактировать профиль', edit_user_registration_path %></li>
+                <li><a href="#">Фото на утверждение</a></li>
+              <% end %>
+            </ul>
+        </li><li>
+        <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
+        </li>
+    </ul>
 
-        <form action="/search.php" method="post" class="search">
-          <input type="submit" class="submit" text="search" />
-          <input type="text" class="text" placeholder="Поиск" />
-        </form>
+    <form action="/search.php" method="post" class="search">
+      <input type="submit" class="submit" text="search" />
+      <input type="text" class="text" placeholder="Поиск" />
+    </form>
 
-        <a  class="basket" href="#"><i class="ico ico-basket"></i> 2</a>
+    <a class="basket" href="#"><i class="ico ico-basket"></i>2</a>
 
   <% end %>
 

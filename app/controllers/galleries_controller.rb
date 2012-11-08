@@ -53,6 +53,6 @@ class GalleriesController < ApplicationController
 
   def have_permissions?
     user = User.find(params[:user_id])
-    redirect_to root_path unless authenticate_user! && have_permissions_galleries(user.id)
+    redirect_to user_galleries_path(params[:user_id]) unless authenticate_user! && have_permissions_controller(user.id)
   end
 end

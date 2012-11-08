@@ -1,6 +1,6 @@
 <ul class="nav">
   <li class>
-    <span>Магазин</span>
+    <a >Магазин</a>
     <ul>
       <li class>
         <a href="#2">Акции</a>
@@ -12,7 +12,7 @@
   </li>
 
   <li class>
-    <%= link_to t('news.news'), news_index_path %>
+    <%= link_to t('news.news'), news_index_path, :class => active_news? %>
   </li>
 
   <li class>

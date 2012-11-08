@@ -29,6 +29,7 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
+db/schema.rb
 
 # YARD artifacts
 .yardoc

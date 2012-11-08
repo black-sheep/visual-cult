@@ -19,20 +19,18 @@ module ApplicationHelper
     current_user && permission_name.inject(false) { |acc, pn| acc || current_user.can?(pn) }
   end
 
-  def have_permissions_galleries(user_id)
+  def have_permissions_controller(user_id)
     action_name_helper = action_name
     action_name_helper = 'create' if action_name == 'new'
     action_name_helper = 'update' if action_name == 'edit'
 
     current_permission  = action_name_helper + '_' + controller_name
-    moderate_permission = 'moderate_' + controller_name
-    # :TODO Ошибка в параметре
-    if (current_user && can?(current_permission) && current_user.id == user_id) || (current_user && can?(moderate_permission))
-      permissions = true
-    end
-    permissions = false if permissions.nil?
 
-    permissions
+    if (current_user && can?(current_permission) && current_user.id == user_id) || (current_user && can?('moderate_' + controller_name))
+      permissions = true
+    else
+      permissions = false
+    end
   end
 
   def top_menu
@@ -52,27 +50,15 @@ module ApplicationHelper
   end
 
   def user_name
-    if @user.nil?
-      User.find(params[:user_id]).name
-    else
-      @user.name
-    end
+    @user.name ||= User.find(params[:user_id])
   end
 
   def user_second_name
-    if @user.nil?
-      User.find(params[:user_id]).second_name
-    else
-      @user.second_name
-    end
+    @user.second_name ||= User.find(params[:user_id]).second_name
   end
 
   def user_id
-    if @user.nil?
-      params[:user_id]
-    else
-      @user.id
-    end
+    @user.id ||= params[:user_id]
   end
 
 end

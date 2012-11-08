@@ -8,12 +8,14 @@ class CreatePermissions < ActiveRecord::Migration
 
     add_index :permissions, :name, :unique => true
 
-    # :TODO Передалать права в разделе новости
     # news permissions
-    Permission.create(:name => 'create_news')
-    Permission.create(:name => 'update_news')
-    Permission.create(:name => 'destroy_news')
     Permission.create(:name => 'moderate_news')
+
+    # blog permissions
+    Permission.create(:name => 'create_blogs')
+    Permission.create(:name => 'update_blogs')
+    Permission.create(:name => 'destroy_blogs')
+    Permission.create(:name => 'moderate_blogs')
 
     # galleries permissions
     Permission.create(:name => 'create_galleries')
@@ -23,9 +25,7 @@ class CreatePermissions < ActiveRecord::Migration
     #photoes permissions
 
     # admin permissions
-    Role.find(1).permissions << Permission.find_by_name('create_news')
-    Role.find(1).permissions << Permission.find_by_name('update_news')
-    Role.find(1).permissions << Permission.find_by_name('destroy_news')
+    Role.find(1).permissions << Permission.find_by_name('moderate_news')
 
     Role.find(1).permissions << Permission.find_by_name('create_galleries')
     Role.find(1).permissions << Permission.find_by_name('moderate_galleries')
