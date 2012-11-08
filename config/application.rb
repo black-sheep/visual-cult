@@ -58,5 +58,7 @@ module VisualCultV2
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.assets.precompile += ['ie6.js','default.ie.css', 'default.ie6', 'default.ie7','default.ie8']
   end
 end
