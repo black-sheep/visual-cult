@@ -5,7 +5,7 @@
 <div class="container author-page">
 
   <div class="definition">
-    <%= image_tag @user.avatar.url, :class => 'author-page-photo pull-left' %>
+    <%= image_tag user_avatar(@user), :class => 'author-page-photo pull-left' %>
 
     <p><%= @user.second_name %> <%= @user.name %></p>
     <p>
