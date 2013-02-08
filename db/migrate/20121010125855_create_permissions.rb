@@ -36,7 +36,7 @@ class CreatePermissions < ActiveRecord::Migration
 
     User.create(
                 :name => 'admin',
-                :second_name => 'admin',
+                :second_name => 'visual-cult',
                 :login => 'admin',
                 :password => 'admin123',
                 :email => 'arravola@gmail.com',

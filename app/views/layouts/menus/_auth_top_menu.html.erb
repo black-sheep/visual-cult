@@ -1,13 +1,13 @@
 <ul class="nav author-nav">
   <li class="author-name">
-    <span><%= user_name %> <%= user_second_name %></span>
+    <span><%= @user.name %> <%= @user.second_name %></span>
     <a class="add-favorite" href="#1">Добавить в избранное</a>
   </li>
   <li>
     <%= link_to 'Работы', root_path %>
     <ul>
       <li>
-        <%= link_to 'Серия и описания', user_galleries_path(user_id) %>
+        <%= link_to 'Серия и описания', user_galleries_path(@user.id) %>
       </li>
       <li>
         <a href="#2">Список серий</a>
@@ -18,7 +18,7 @@
     </ul>
   </li>
   <li>
-    <%= link_to 'Об авторе', user_path(user_id) %>
+    <%= link_to 'Об авторе', user_path(@user.id) %>
     <ul>
       <li>
         <a href="#1">Статистика автора</a>

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 gem 'carrierwave'
@@ -10,6 +10,7 @@ gem 'devise'
 gem 'client_side_validations'
 gem 'kaminari'
 gem 'bb-ruby'
+gem 'declarative_authorization'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

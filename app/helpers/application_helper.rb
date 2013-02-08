@@ -48,17 +48,4 @@ module ApplicationHelper
       render 'layouts/menus/filter'
     end
   end
-
-  def user_name
-    @user.name ||= User.find(params[:user_id])
-  end
-
-  def user_second_name
-    @user.second_name ||= User.find(params[:user_id]).second_name
-  end
-
-  def user_id
-    @user.id ||= params[:user_id]
-  end
-
 end

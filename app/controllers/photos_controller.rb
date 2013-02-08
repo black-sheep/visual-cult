@@ -3,6 +3,7 @@ class PhotosController < ApplicationController
 
   before_filter :load_gallery
   before_filter :check_gallery, only: [:create, :update]
+  before_filter :get_user
 
   def index
   end
@@ -64,6 +65,10 @@ class PhotosController < ApplicationController
 
   def check_gallery
     @gallery = gallery(params[:select][:gallery_id], params[:gallery_name], params[:user_id])
+  end
+
+  def get_user
+    @user = User.find(params[:user_id])
   end
 
 end
