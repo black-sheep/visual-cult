@@ -1,13 +1,5 @@
 <div class="container">
   <div>
-    <h3><div class="back-line">Права ролей</div></h3>
-    <ul>
-    <% @roles.all.each do |role| %>
-       <li><%= link_to role.name, edit_admin_permission_path(role.id) %> </li>
-    <% end %>
-    </ul>
-  </div>
-  <div>
     <h3><div class="back-line">Назначение ролей пользователям</div></h3>
     <ul>
       <li><%= link_to 'Роли пользователей', users_roles_path %></li>

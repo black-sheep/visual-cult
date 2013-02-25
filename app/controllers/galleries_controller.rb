@@ -4,7 +4,6 @@ class GalleriesController < ApplicationController
   include ApplicationHelper
 
   before_filter :load_gallery
-  before_filter :have_permissions?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @galleries = @user.galleries
@@ -49,10 +48,5 @@ class GalleriesController < ApplicationController
   private
   def load_gallery
     @user = User.find(params[:user_id])
-  end
-
-  def have_permissions?
-    user = User.find(params[:user_id])
-    redirect_to user_galleries_path(params[:user_id]) unless authenticate_user! && have_permissions_controller(user.id)
   end
 end

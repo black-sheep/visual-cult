@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
 
   has_many :blogs
   has_many :galleries
-  has_many :permissions, :through => :roles
   has_and_belongs_to_many :roles
 
   mount_uploader :avatar, AvatarUploader
@@ -52,8 +51,8 @@ class User < ActiveRecord::Base
 
   before_create :add_default_role
 
-  def can?(permission_name)
-    self.permissions.find_by_name(permission_name)
+  def role_symbols
+    (roles || []).map {|r| r.name.to_sym}
   end
 
   private

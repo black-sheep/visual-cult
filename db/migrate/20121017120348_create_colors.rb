@@ -5,5 +5,7 @@ class CreateColors < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :colors, :name, :unique => true
   end
 end
