@@ -29,8 +29,9 @@
                 <li><%= link_to t('admin.admin_page'), admin_path %></li>
               <% else %>
                 <li><a href="#">Добавить работу</a></li>
+                <li><a href="<%= user_path(current_user.id) %>">Личный кабинет</a></li>
+                <li><a href="<%= new_user_gallery_path(current_user.id) %>">Создать галлерею</a></li>
                 <li><%= link_to 'Редактировать профиль', edit_user_registration_path %></li>
-                <li><a href="#">Фото на утверждение</a></li>
               <% end %>
             </ul>
         </li><li>

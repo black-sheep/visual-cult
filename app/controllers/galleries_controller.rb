@@ -1,9 +1,8 @@
-# coding: utf-8
-
 class GalleriesController < ApplicationController
   include ApplicationHelper
 
   before_filter :load_gallery
+  before_filter :mine?, only: [ :create, :new, :edit, :update, :destroy ]
 
   def index
     @galleries = @user.galleries
@@ -48,5 +47,9 @@ class GalleriesController < ApplicationController
   private
   def load_gallery
     @user = User.find(params[:user_id])
+  end
+
+  def mine?
+
   end
 end
