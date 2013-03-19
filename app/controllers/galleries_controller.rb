@@ -1,4 +1,6 @@
 class GalleriesController < ApplicationController
+  #filter_access_to :all
+
   include ApplicationHelper
 
   before_filter :load_gallery

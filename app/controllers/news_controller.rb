@@ -1,8 +1,8 @@
 class NewsController < ApplicationController
+  #filter_access_to :all
+
   include ApplicationHelper
   include NewsHelper
-
-  before_filter :have_permissions?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @news = New.order('created_at DESC').page(params[:page]).per(10)
@@ -39,11 +39,5 @@ class NewsController < ApplicationController
     new.destroy
     redirect_to news_index_path
   end
-
-  private
-  def have_permissions?
-    redirect_to news_index_path unless authenticate_user! && have_permissions_news(current_user.id)
-  end
-
 
 end

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to t('news.add'), new_news_path if can?('create_news') %>
+  <%=  link_to t('news.add'), new_news_path if permitted_to? [:create, :new], :news  %>
     <ul class="news">
       <% @news.all.each do |new| %>
       <li>
